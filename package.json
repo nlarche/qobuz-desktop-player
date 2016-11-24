@@ -2,7 +2,7 @@
   "name": "qobuz-desktop-player",
   "version": "0.0.1",
   "description": "Qobuz desktop player",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "electron ."
   },

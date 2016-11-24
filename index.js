@@ -1,2 +1,2 @@
 require('babel-register');
-require('./electron/main.js');
+require('./src/electron/main.js');
