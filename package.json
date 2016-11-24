@@ -1,7 +1,7 @@
 {
   "name": "qobuz-desktop-player",
   "version": "0.0.1",
-  "description": "Quobuz desktop player",
+  "description": "Qobuz desktop player",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -9,10 +9,7 @@
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Qobuz"   
   ],
   "author": "GitHub",
   "license": "CC0-1.0",

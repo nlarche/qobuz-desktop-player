@@ -8,7 +8,6 @@ player - next - button
 */
 const { ipcRenderer } = require('electron');
 
-ipcRenderer.on('play', function() {
-   console.log('play')
-   document.getElementById("player-play-button").click(); 
+ipcRenderer.on('player:action', function(event, action) {
+   document.getElementById(action).click();    
 });

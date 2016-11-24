@@ -66,8 +66,8 @@ const clickShow = () => {
   mainWindow.show();
 }
 
-const clickPlay = () => {  
-  mainWindow.webContents.send('play');
+const clickPlayer = (message) => {  
+  mainWindow.webContents.send('player:action', message);
 }
 
 const initTray = (config) => {
@@ -75,11 +75,10 @@ const initTray = (config) => {
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Show', type: 'normal', click: clickShow },
     { type: 'separator' },
-    { label: 'play / pause', type: 'normal', click: clickPlay },
-    { label: 'Previous Track', type: 'normal' },
-    { label: 'Next Track', type: 'normal' }
+    { label: 'play / pause', type: 'normal', click: clickPlayer.bind(this, "player-play-button") },
+    { label: 'Previous Track', type: 'normal', click: clickPlayer.bind(this, "player-previous-button") },
+    { label: 'Next Track', type: 'normal', click: clickPlayer.bind(this, "player-next-button") }
   ])
   tray.setToolTip(config.title);
   tray.setContextMenu(contextMenu)
-
 }
