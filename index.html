@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+</head>
+<style>
+  .container {
+    display: flex;
+    min-height: 98vh
+  }
+  
+  webview {
+    display: inline-flex;
+    min-width: 100%;
+    min-height: 100%
+  }
+</style>
+
+<body>
+  <div class="container">
+    <webview id="webview" src="http://player.qobuz.com/#!" autosize="on" preload="./front/preload.js" nodeintegration></webview>
+    <div>
+</body>
+
+<script>
+    // You can also require other files to run in this process
+    require('./front/renderer.js')
+  </script>
+
+</html>
