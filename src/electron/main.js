@@ -9,8 +9,9 @@ import getConfig from './config';
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let tray;
+let willQuitApp = false;
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const config = getConfig()
 
@@ -27,11 +28,15 @@ function createWindow () {
   mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null
+  mainWindow.on('close', function (e) {
+    if (willQuitApp) {
+      /* the user tried to quit the app */
+      mainWindow = null;
+    } else {
+      /* the user only tried to close the window */
+      e.preventDefault();
+      mainWindow.hide();
+    }
   })
 
   initTray(config);
@@ -59,6 +64,9 @@ app.on('activate', function () {
   }
 })
 
+// the user quit the app : app.quit()
+app.on('before-quit', () => willQuitApp = true);
+
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 const clickShow = () => {
@@ -66,7 +74,7 @@ const clickShow = () => {
   mainWindow.show();
 }
 
-const clickPlayer = (message) => {  
+const clickPlayer = (message) => {
   mainWindow.webContents.send('player:action', message);
 }
 
@@ -77,7 +85,9 @@ const initTray = (config) => {
     { type: 'separator' },
     { label: 'play / pause', type: 'normal', click: clickPlayer.bind(this, "player-play-button") },
     { label: 'Previous Track', type: 'normal', click: clickPlayer.bind(this, "player-previous-button") },
-    { label: 'Next Track', type: 'normal', click: clickPlayer.bind(this, "player-next-button") }
+    { label: 'Next Track', type: 'normal', click: clickPlayer.bind(this, "player-next-button") },
+    { type: 'separator' },
+    { label: 'Quit', type: 'normal', click: () => app.quit() },
   ])
   tray.setToolTip(config.title);
   tray.setContextMenu(contextMenu)
