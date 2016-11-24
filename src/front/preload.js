@@ -1,8 +1,11 @@
-console.log('preload.js')
+const { ipcRenderer, remote } = require('electron');
 
+var webview = document.getElementById("webview");
 
-const { ipcRenderer } = require('electron');
+ipcRenderer.on('prepare-view', function (event, action) {
+    document.getElementById("header-buttons").style.display = 'none';
+});
 
-ipcRenderer.on('player:action', function(event, action) {
-   document.getElementById(action).click();    
+ipcRenderer.on('player:action', function (event, action) {
+    document.getElementById(action).click();
 });
