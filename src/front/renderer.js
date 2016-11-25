@@ -5,10 +5,12 @@ var webview = document.getElementById("webview");
 
 webview.addEventListener('load-commit', function () {
      webview.send('prepare-view');
+    //  webview.openDevTools();
 })
-
 
 require('electron').ipcRenderer.on('player:action', function (event, message) {
     webview.send('player:action', message);
 });
+
+
 
