@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . "
+    "package-mac": "electron-packager . --out=dist --icon=src/assets/icon.icns"
   },
   "repository": "https://github.com/nlarche/qobuz-desktop-player",
   "keywords": [
