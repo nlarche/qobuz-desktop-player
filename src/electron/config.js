@@ -13,7 +13,7 @@ export default () => {
     center: true,
     show: true,
     autoHideMenuBar: true,
-    icon: path.resolve(__dirname + '/../assets/24x24.png'),
+    icon: path.resolve(__dirname + '/../assets/18x18.png'),
     title: 'Qobuz Desktop player',
     webPreferences: {
       nodeIntegration: true,
