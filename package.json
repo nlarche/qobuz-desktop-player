@@ -1,6 +1,6 @@
 {
   "name": "qobuz-desktop-player",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Qobuz desktop player",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,10 @@
     "Electron",
     "Qobuz"
   ],
-  "author": {"name" : "nlarche", "email" : "nico060984@gmail.com"},
+  "author": {
+    "name": "nlarche",
+    "email": "nico060984@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.18.2",
