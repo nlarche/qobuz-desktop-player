@@ -8,7 +8,7 @@
     "start": "electron .",
     "package-mac": "electron-packager . --out=dist --icon=src/assets/icon.icns --overwrite",
     "pack": "build --dir",
-    "dist": "build"
+    "release": "build"
   },
   "repository": "https://github.com/nlarche/qobuz-desktop-player",
   "keywords": [
