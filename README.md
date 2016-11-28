@@ -2,6 +2,10 @@
 
 Simple Election app for Qobuz : http://www.qobuz.com/fr-fr/discover
 
+### Motivation
+
+There is no official linux qobuz desktop player, so I made it
+
 ## Developpement
 
 ```bash
