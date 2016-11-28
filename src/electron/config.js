@@ -5,8 +5,11 @@ export default () => {
   const screenSize = screen.getPrimaryDisplay().workAreaSize;
 
   const platform = process.platform;
+  const env = platform === 'darwin' ? 'mac' : platform === 'win32' ? 'win' : 'linux';
 
-  const path = '/../assets/' + platform === 'darwin' ? 'mac' : platform === 'win32' ? 'win' : 'linux';
+  console.log(env);
+
+  const ImagePath = '/../assets/' + env;
 
   const defaultHeight = (screenSize.height * 3) / 4;
   const defaultWidth = (screenSize.width * 3) / 4;
@@ -17,7 +20,7 @@ export default () => {
     center: true,
     show: true,
     autoHideMenuBar: true,
-    icon: path.resolve(__dirname + path + 'icon.png'),
+    icon: path.resolve(__dirname + ImagePath + '/icon.png'),
     title: 'Qobuz Desktop player',
     webPreferences: {
       nodeIntegration: true,
