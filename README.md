@@ -13,3 +13,9 @@ cd qobuz-desktop-player
 npm install
 # Run the app
 npm start
+```
+
+## CI
+
+ - travis.yml for linux and mac build
+ - appveyor.myl for windows build
