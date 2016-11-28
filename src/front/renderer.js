@@ -3,14 +3,12 @@
 // All of the Node.js APIs are available in this process.
 var webview = document.getElementById("webview");
 
+
 webview.addEventListener('load-commit', function () {
      webview.send('prepare-view');
-    //  webview.openDevTools();
+     //webview.openDevTools();
 })
 
 require('electron').ipcRenderer.on('player:action', function (event, message) {
     webview.send('player:action', message);
 });
-
-
-
