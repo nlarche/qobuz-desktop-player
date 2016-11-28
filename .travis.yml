@@ -35,6 +35,5 @@ env:
   global:
     secure: wNkhOnNHBcLu0T5LYL/054ocIZl7JrKpqI5A2OjVLvUqWexu4d5PEUjAVNa+MC08V5snmtVRtG5hk0o0592dhd5ZNzaWM1CenfL1AM+rVT4lCzcvkXN9+PMbed0DBEQWmsdHV/r8CryC5qXiPPO8jxohVHJb20M3mJ7szhKwqC3HX4NTNFvscq1TRySMdLgsNjsHZK4tSc3/5ag4rv0JlWqjR6x809iHpjndKiv45d+a/WSi1Koxlr/cYyxa6Et2IYG+yUetuiWyVzRAnNYFRr9Vk38+tQkmz7P6KxWAxxwUOisePp/Eyx8UQhJ9Xzz35j6+C7ezu1HzD8OM7eEBxh7mPz2BPGnTHwcDtZ5WrNoA7Lxwrp40Ws7MKEIud7qfxyyjW9S6JkZyvuXiyRt/Ka9XyCmHOQUCo3HO7omGpBtP9ZvXIn7eJfoDjVe6kHRw2xI3g7ICMJheD+mWnnpJkslbEBfs6nMKHXucvKd6CYGC89Gkle3JSakQBdm1zw4QxY/xQ4AOSt+4tSFk/s/bPbZ1VqXtb8PrM/69ni+p4v0Boxt0jfsJH3ywPU/cmNvvYnEjWH39Mroef8Alv501Up0RvOm+L5ezkplzg/SfufQ18UTEmCQDx7Fr/rlisoTlcu6aJQSOZKuF3VW3FtDANRkTdMGYwtZj289zAGD+aFw=
 
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+deploy :
+  tags : true
