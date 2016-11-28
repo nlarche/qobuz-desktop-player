@@ -1,43 +1,36 @@
 osx_image: xcode7.3
-
 sudo: required
 dist: trusty
-
 language: c
-
 matrix:
   include:
-    - os: osx
-    - os: linux
-      env: CC=clang CXX=clang++ npm_config_clang=1
-      compiler: clang
-
+  - os: osx
+  - os: linux
+    env: CC=clang CXX=clang++ npm_config_clang=1
+    compiler: clang
 cache:
   directories:
   - node_modules
   - app/node_modules
-  - $HOME/.electron
-  - $HOME/.cache
-
+  - "$HOME/.electron"
+  - "$HOME/.cache"
 addons:
   apt:
     packages:
-      - libgnome-keyring-dev
-      - icnsutils
-      - graphicsmagick
-
+    - libgnome-keyring-dev
+    - icnsutils
+    - graphicsmagick
 before_install:
-  - mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v1.2.1/git-lfs-$([ "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-1.2.1.tar.gz | tar -xz -C /tmp/git-lfs --strip-components 1 && /tmp/git-lfs/git-lfs pull
-
+- mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v1.2.1/git-lfs-$([
+  "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-1.2.1.tar.gz
+  | tar -xz -C /tmp/git-lfs --strip-components 1 && /tmp/git-lfs/git-lfs pull
 install:
 - nvm install 6
-- npm install electron-builder@next # force install next version to test electron-builder
+- npm install electron-builder@next
 - npm install
 - npm prune
-
 script:
 - npm run release
-
-# branches:
-#   except:
-#     - "/^v\\d+\\.\\d+\\.\\d+$/"
+env:
+  global:
+    secure: wNkhOnNHBcLu0T5LYL/054ocIZl7JrKpqI5A2OjVLvUqWexu4d5PEUjAVNa+MC08V5snmtVRtG5hk0o0592dhd5ZNzaWM1CenfL1AM+rVT4lCzcvkXN9+PMbed0DBEQWmsdHV/r8CryC5qXiPPO8jxohVHJb20M3mJ7szhKwqC3HX4NTNFvscq1TRySMdLgsNjsHZK4tSc3/5ag4rv0JlWqjR6x809iHpjndKiv45d+a/WSi1Koxlr/cYyxa6Et2IYG+yUetuiWyVzRAnNYFRr9Vk38+tQkmz7P6KxWAxxwUOisePp/Eyx8UQhJ9Xzz35j6+C7ezu1HzD8OM7eEBxh7mPz2BPGnTHwcDtZ5WrNoA7Lxwrp40Ws7MKEIud7qfxyyjW9S6JkZyvuXiyRt/Ka9XyCmHOQUCo3HO7omGpBtP9ZvXIn7eJfoDjVe6kHRw2xI3g7ICMJheD+mWnnpJkslbEBfs6nMKHXucvKd6CYGC89Gkle3JSakQBdm1zw4QxY/xQ4AOSt+4tSFk/s/bPbZ1VqXtb8PrM/69ni+p4v0Boxt0jfsJH3ywPU/cmNvvYnEjWH39Mroef8Alv501Up0RvOm+L5ezkplzg/SfufQ18UTEmCQDx7Fr/rlisoTlcu6aJQSOZKuF3VW3FtDANRkTdMGYwtZj289zAGD+aFw=
