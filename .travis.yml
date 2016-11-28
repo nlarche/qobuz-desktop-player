@@ -37,6 +37,6 @@ install:
 script:
 - npm run build
 
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+# branches:
+#   except:
+#     - "/^v\\d+\\.\\d+\\.\\d+$/"
