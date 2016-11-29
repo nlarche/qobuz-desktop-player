@@ -1,14 +1,14 @@
-import { app, BrowserWindow, Menu, Tray } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import url from 'url';
 
 import getConfig from './config';
-
+import appTray from './tray';
+import appMenu from './menu';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let tray;
 let willQuitApp = false;
 
 function createWindow() {
@@ -39,7 +39,8 @@ function createWindow() {
     }
   })
 
-  initTray(config);
+  appTray(config, clickShow, clickPlayer);
+  appMenu(config, clickPlayer);
 }
 
 // This method will be called when Electron has finished
@@ -78,17 +79,5 @@ const clickPlayer = (message) => {
   mainWindow.webContents.send('player:action', message);
 }
 
-const initTray = (config) => {
-  tray = new Tray(config.icon)
-  const contextMenu = Menu.buildFromTemplate([
-    { label: 'Show', type: 'normal', click: clickShow },
-    { type: 'separator' },
-    { label: 'play / pause', type: 'normal', click: clickPlayer.bind(this, "player-play-button") },
-    { label: 'Previous Track', type: 'normal', click: clickPlayer.bind(this, "player-previous-button") },
-    { label: 'Next Track', type: 'normal', click: clickPlayer.bind(this, "player-next-button") },
-    { type: 'separator' },
-    { label: 'Quit', type: 'normal', click: () => app.quit() },
-  ])
-  tray.setToolTip(config.title);
-  tray.setContextMenu(contextMenu)
-}
+
+
