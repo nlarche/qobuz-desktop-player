@@ -31,8 +31,8 @@ environment:
   GH_TOKEN:
     secure: MejLyYd0oG10+S/YO+YXVjACKDGRnWNuoDAnM8o44mR9XkqjXh4xuk5/K5cXF7yA
 
-- provider: Environment
-  name: production
-  on:
-    branch: master
-    appveyor_repo_tag: true
+deploy:
+  - provider: Environment
+    name: production
+    on:
+      appveyor_repo_tag: true
