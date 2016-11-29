@@ -9,6 +9,7 @@ import appMenu from './menu';
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let tray;
 let willQuitApp = false;
 
 function createWindow() {
@@ -39,7 +40,7 @@ function createWindow() {
     }
   })
 
-  appTray(config, clickShow, clickPlayer);
+  tray = appTray(config, clickShow, clickPlayer);
   appMenu(config, clickPlayer);
 }
 
