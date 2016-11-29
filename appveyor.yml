@@ -28,6 +28,7 @@ build_script:
 test: off
 
 environment:
+  name: production
   GH_TOKEN:
     secure: MejLyYd0oG10+S/YO+YXVjACKDGRnWNuoDAnM8o44mR9XkqjXh4xuk5/K5cXF7yA
 
