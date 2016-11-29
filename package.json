@@ -1,6 +1,6 @@
 {
   "name": "qobuz-desktop-player",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Qobuz desktop player",
   "main": "index.js",
   "scripts": {
