@@ -6,7 +6,6 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "electron .",
-    "package-mac": "electron-packager . --out=dist --icon=src/assets/icon.icns --overwrite",
     "pack": "build --dir",
     "release": "build"
   },
