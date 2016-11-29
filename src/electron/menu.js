@@ -1,6 +1,6 @@
-import { app, Menu, shell } from 'electron';
+import { Menu, shell } from 'electron';
 
-const appMenu = (config, clickPlayer) => {
+const appMenu = (config, clickPlayer, quitPlayer) => {
   const menu = new Menu()
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -15,7 +15,7 @@ const appMenu = (config, clickPlayer) => {
       label: 'Window',
       submenu: [
         { label: 'Minimize', accelerator: 'CmdOrCtrl+M', role: 'minimize' },
-        { label: 'Quit', type: 'normal', click: () => app.quit() , accelerator: 'CmdOrCtrl+Q', }
+        { label: 'Quit', type: 'normal', click: quitPlayer , accelerator: 'CmdOrCtrl+Q', }
       ]
     },
     {
