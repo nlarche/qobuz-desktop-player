@@ -37,4 +37,6 @@ env:
 
 deploy :
   provider: releases
-  tags : true
+  on :
+    tags : true
+    all_branches: false
