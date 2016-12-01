@@ -5,6 +5,7 @@ import url from 'url';
 import getConfig from './config';
 import appTray from './tray';
 import appMenu from './menu';
+import Action from './action';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -26,7 +27,7 @@ function createWindow() {
     }))
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('close', function(e) {
@@ -41,8 +42,10 @@ function createWindow() {
         }
     })
 
-    tray = appTray(config, clickShow, clickPlayer, quitPlayer);
-    appMenu(config, clickPlayer, quitPlayer);
+    const action = new Action(mainWindow);
+
+    tray = appTray(config, action);
+    appMenu(config, action);
 }
 
 // This method will be called when Electron has finished
@@ -73,21 +76,7 @@ app.on('before-quit', () => willQuitApp = true);;
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-const clickShow = () => {
-    mainWindow.focus();
-    mainWindow.show();
-}
 
-const clickPlayer = (message) => {
-    mainWindow.webContents.send('player:action', message);
-}
-
-// Need to manually handle quit to save laste state
-const quitPlayer = () => {
-   mainWindow.hide();
-   mainWindow.webContents.send('player:quit');
-   setTimeout(() => app.quit(), 300);
-}
 
 
 

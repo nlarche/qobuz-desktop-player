@@ -2,22 +2,32 @@ export default class QobuzNotification {
     constructor() {
         this.lastParent = undefined;
         this.notification = undefined;
-        this.init()
-    }
-    init() {
-        setInterval(() => {
-            var parent = document.getElementById("now-playing");
-            // is playing
-            var playBtn = document.getElementById("player-play-button").getElementsByClassName('ui-icon-pause');
-            if (playBtn.length > 0) {
-                var parsedHtml = this.parseChild(parent);
 
-                if (!this.ArrayEquals(parsedHtml, this.lastParent)) {
-                    this.lastParent = parsedHtml;
-                    this.getNotification(parsedHtml);
-                }
+        this.getNotification = this.getNotification.bind(this);
+        this.parseChild = this.parseChild.bind(this);
+        this.ArrayEquals = this.ArrayEquals.bind(this);
+        this.notify = this.notify.bind(this);
+    }
+    start() {
+        this.interval = setInterval(this.getNotification, 4000);
+    }
+
+    stop() {
+        clearInterval(this.interval);
+    }
+
+    getNotification() {
+        var parent = document.getElementById("now-playing");
+        // is playing
+        var playBtn = document.getElementById("player-play-button").getElementsByClassName('ui-icon-pause');
+        if (playBtn.length > 0) {
+            var parsedHtml = this.parseChild(parent);
+
+            if (!this.ArrayEquals(parsedHtml, this.lastParent)) {
+                this.lastParent = parsedHtml;
+                this.notify(parsedHtml);
             }
-        }, 4000);
+        }
     }
 
     ArrayEquals(arr, arr1) {
@@ -35,7 +45,7 @@ export default class QobuzNotification {
         return arr[1] === arr1[1] && arr[2] === arr1[2] && arr[3] === arr1[3] && arr[4] === arr1[4]
     }
 
-    getNotification(parent) {
+    notify(parent) {
         if (Notification.permission === "granted") {
             if (this.notification) {
                 this.notification.close();

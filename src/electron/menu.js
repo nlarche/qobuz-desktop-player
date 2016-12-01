@@ -1,21 +1,24 @@
 import { Menu, shell } from 'electron';
 
-const appMenu = (config, clickPlayer, quitPlayer) => {
-  const menu = new Menu()
+const appMenu = (config, mainActions) => {
+  const menu = new Menu();
+  
+  const actions = mainActions.getActions();
+  
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Player',
       submenu: [
-        { label: 'play / pause', type: 'normal', click: clickPlayer.bind(this, "player-play-button") },
-        { label: 'Previous Track', type: 'normal', click: clickPlayer.bind(this, "player-previous-button") },
-        { label: 'Next Track', type: 'normal', click: clickPlayer.bind(this, "player-next-button") },
+        actions.play,
+        actions.previous,
+        actions.next,
       ]
     },
     {
       label: 'Window',
       submenu: [
         { label: 'Minimize', accelerator: 'CmdOrCtrl+M', role: 'minimize' },
-        { label: 'Quit', type: 'normal', click: quitPlayer , accelerator: 'CmdOrCtrl+Q', }
+        actions.quit
       ]
     },
     {
