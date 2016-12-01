@@ -1,6 +1,5 @@
-import { screen } from 'electron';
+import { screen, app } from 'electron';
 import path from 'path';
-import packageJson from '../../package.json';
 
 export default () => {
   const screenSize = screen.getPrimaryDisplay().workAreaSize;
@@ -20,11 +19,11 @@ export default () => {
     show: true,
     autoHideMenuBar: true,
     icon: path.resolve(__dirname + ImagePath + '/icon.png'),
-    title: 'Qobuz Desktop player',
+    title: app.getName(),
     webPreferences: {
       nodeIntegration: true,
     },
-    version : packageJson.version
+    version : app.getVersion()
   };
   return baseConfig;
 };
