@@ -4,7 +4,7 @@ var webview = document.getElementById("webview");
 
 webview.addEventListener('load-commit', function () {
     webview.send('prepare-view');
-    webview.openDevTools();    
+    // webview.openDevTools();    
 });
 
 ipcRenderer.on('player:action', function (event, message) {

@@ -3,9 +3,9 @@ import path from 'path';
 import url from 'url';
 
 import getConfig from './config';
-import appTray from './tray';
-import appMenu from './menu';
-import Action from './action';
+import appTray from './component/tray';
+import appMenu from './component/menu';
+import Action from './component/action';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,7 +27,7 @@ function createWindow() {
     }))
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('close', function (e) {
