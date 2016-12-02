@@ -1,7 +1,7 @@
 {
   "name": "qobuz-desktop-player",
   "productName": "Qobuz Desktop player",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Qobuz desktop player",
   "main": "index.js",
   "scripts": {
