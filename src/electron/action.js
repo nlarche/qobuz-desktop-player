@@ -1,10 +1,12 @@
 import { MenuItem, app } from 'electron';
 
-export default class Action {
-    constructor(mainWindow) {
-        this.mainWindow = mainWindow;
+import settings from 'electron-settings'
 
-        this.isNotification = false;
+export default class Action {
+    constructor(mainWindow, config) {
+
+        this.mainWindow = mainWindow;
+        this.config = config;
 
         this.clickShow = this.clickShow.bind(this);
         this.clickPlayer = this.clickPlayer.bind(this);
@@ -16,7 +18,7 @@ export default class Action {
         this.next = { label: 'Next Track', type: 'normal', click: this.clickPlayer.bind(this, "player-next-button") };
         this.quit = { label: 'Quit', type: 'normal', click: this.quitPlayer };
         this.show = { label: 'Show', type: 'normal', click: this.clickShow };
-        this.notification = new MenuItem({ label: 'Notification', type: 'checkbox', checked: false, click: this.clickNotification });
+        this.notification = { label: 'Notification', type: 'checkbox', checked: config.settings.get('notification'), click: this.clickNotification };
     }
 
     getActions() {
@@ -41,6 +43,7 @@ export default class Action {
 
     clickNotification(menuItem, browserWindow, event) {
         this.mainWindow.webContents.send('player:notification', menuItem.checked ? 'start' : 'stop');
+        this.config.settings.set('notification', menuItem.checked);
     }
 
     // Need to manually handle quit to save laste state

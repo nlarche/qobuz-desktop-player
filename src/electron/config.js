@@ -1,5 +1,6 @@
 import { screen, app } from 'electron';
 import path from 'path';
+import Config  from 'electron-config';
 
 export default () => {
   const screenSize = screen.getPrimaryDisplay().workAreaSize;
@@ -23,7 +24,8 @@ export default () => {
     webPreferences: {
       nodeIntegration: true,
     },
-    version : app.getVersion()
+    version : app.getVersion(),
+    settings : new Config()
   };
   return baseConfig;
 };
