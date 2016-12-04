@@ -50,7 +50,7 @@ export default class QobuzNotification {
             if (this.notification) {
                 this.notification.close();
             }
-            this.notification = new window.Notification(parent[2], { body: parent[3] + "\n" + parent[4], icon: parent[1] });
+            this.notification = new window.Notification(parent[2], { body: parent[3] + "\n" + parent[4], icon: parent[1], silent: true });
             setTimeout(this.notification.close.bind(this.notification), 1000);
         }
     }
