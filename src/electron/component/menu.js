@@ -10,6 +10,7 @@ const appMenu = (config, mainActions) => {
       label: 'Player',
       submenu: [
         actions.play,
+        actions.pause,
         actions.previous,
         actions.next,
       ]

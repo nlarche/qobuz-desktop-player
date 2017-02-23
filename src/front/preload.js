@@ -10,7 +10,7 @@ ipcRenderer.on('prepare-view', function (event, action) {
 });
 
 ipcRenderer.on('player:action', function (event, action) {
-    document.getElementById(action).click();
+    document.getElementsByClassName(action)[0].click();
 });
 
 ipcRenderer.on('player:notification', function (event, action) {

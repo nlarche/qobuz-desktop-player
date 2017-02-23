@@ -13,9 +13,10 @@ export default class Action {
         this.quitPlayer = this.quitPlayer.bind(this);
         this.clickNotification = this.clickNotification.bind(this);
 
-        this.play = { label: 'play / pause', type: 'normal', click: this.clickPlayer.bind(this, "player-play-button") };
-        this.previous = { label: 'Previous Track', type: 'normal', click: this.clickPlayer.bind(this, "player-previous-button") };
-        this.next = { label: 'Next Track', type: 'normal', click: this.clickPlayer.bind(this, "player-next-button") };
+        this.play = { label: 'play', type: 'normal', click: this.clickPlayer.bind(this, "pct-player-play") };
+        this.pause = { label: 'pause', type: 'normal', click: this.clickPlayer.bind(this, "pct-player-pause") };
+        this.previous = { label: 'Previous Track', type: 'normal', click: this.clickPlayer.bind(this, "pct-player-prev") };
+        this.next = { label: 'Next Track', type: 'normal', click: this.clickPlayer.bind(this, "pct-player-next") };
         this.quit = { label: 'Quit', type: 'normal', click: this.quitPlayer };
         this.show = { label: 'Show', type: 'normal', click: this.clickShow };
         this.notification = { label: 'Notification', type: 'checkbox', checked: config.settings.get('notification'), click: this.clickNotification };
@@ -24,6 +25,7 @@ export default class Action {
     getActions() {
         return {
             play: this.play,
+            pause :this.pause,
             previous: this.previous,
             next: this.next,
             quit: this.quit,

@@ -9,6 +9,7 @@ const appTray = (config, mainActions) => {
     actions.show,
     { type: 'separator' },
     actions.play,
+    actions.pause,
     actions.previous,
     actions.next,
     { type: 'separator' },
