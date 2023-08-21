@@ -22,10 +22,13 @@ export default () => {
     icon: path.resolve(__dirname + ImagePath + '/icon.png'),
     title: app.getName(),
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true,    
+      contextIsolation: false,
+      webviewTag : true,
     },
     version : app.getVersion(),
-    settings : new Config()
+    settings : new Config(),
+
   };
   return baseConfig;
 };

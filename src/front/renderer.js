@@ -1,10 +1,10 @@
-var ipcRenderer = require('electron').ipcRenderer;
+const ipcRenderer = require('electron').ipcRenderer;
 
-var webview = document.getElementById("webview");
+const webview = document.getElementById("webview");
 
 webview.addEventListener('load-commit', function () {
     webview.send('prepare-view');
-    // webview.openDevTools();    
+    webview.openDevTools();    
 });
 
 ipcRenderer.on('player:action', function (event, message) {

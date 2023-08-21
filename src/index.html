@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <script>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+
+
+  <!-- <script>
     document.write('<base href="' + document.location + '" />');
-  </script>
+  </script> -->
 </head>
 <style>
   .container {
@@ -22,13 +25,11 @@
 
 <body>
   <div class="container">
-    <webview id="webview" src="http://play.qobuz.com/" autosize="on" preload="./front/preload.js" ></webview>
+    <webview id="webview" src="https://play.qobuz.com" autosize="on" preload="./front/preload.js" ></webview>
     <div>
 </body>
 
-<script>
-    // You can also require other files to run in this process
-    require('./front/renderer.js')
+<script src="./front/renderer.js">
   </script>
 
 </html>
